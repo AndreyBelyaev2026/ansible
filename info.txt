@@ -1,0 +1,69 @@
+Получение "Ip адрес"
+ansible -i host.ini demo -m setup -a "filter=ansible_default_ipv4" | grep -w "address"
+[WARNING]: Host '192.168.100.17' is using the discovered Python interpreter at '/usr/bin/python3.13', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.19/reference_appendices/interpreter_discovery.html for more information.
+            "address": "192.168.100.17",
+
+Получение "Тип OS"
+ansible -i host.ini -m setup -a "filter=ansible_os_family" demo
+[WARNING]: Host '192.168.100.17' is using the discovered Python interpreter at '/usr/bin/python3.13', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.19/reference_appendices/interpreter_discovery.html for more information.
+192.168.100.17 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_os_family": "Debian",
+        "discovered_interpreter_python": "/usr/bin/python3.13"
+    },
+    "changed": false
+}
+
+Получение "Версию OS"
+ansible -i host.ini -m setup -a "filter=ansible_distribution_version" demo
+[WARNING]: Host '192.168.100.17' is using the discovered Python interpreter at '/usr/bin/python3.13', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.19/reference_appendices/interpreter_discovery.html for more information.
+192.168.100.17 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_distribution_version": "13.5",
+        "discovered_interpreter_python": "/usr/bin/python3.13"
+    },
+    "changed": false
+}
+
+Получение "Hostname"
+ansible -i host.ini -m setup -a "filter=ansible_hostname" demo
+[WARNING]: Host '192.168.100.17' is using the discovered Python interpreter at '/usr/bin/python3.13', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.19/reference_appendices/interpreter_discovery.html for more information.
+192.168.100.17 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_hostname": "tansible-1",
+        "discovered_interpreter_python": "/usr/bin/python3.13"
+    },
+    "changed": false
+}
+
+Получение "Переменные окружение env"
+ansible -i host.ini -m setup -a "filter=ansible_env" demo
+[WARNING]: Host '192.168.100.17' is using the discovered Python interpreter at '/usr/bin/python3.13', but future installation of another Python interpreter could cause a different interpreter to be discovered. See https://docs.ansible.com/ansible-core/2.19/reference_appendices/interpreter_discovery.html for more information.
+192.168.100.17 | SUCCESS => {
+    "ansible_facts": {
+        "ansible_env": {
+            "DBUS_SESSION_BUS_ADDRESS": "unix:path=/run/user/0/bus",
+            "HOME": "/root",
+            "LANG": "en_US.UTF-8",
+            "LANGUAGE": "en_US:en",
+            "LOGNAME": "root",
+            "MOTD_SHOWN": "pam",
+            "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "PWD": "/root",
+            "SHELL": "/bin/bash",
+            "SHLVL": "0",
+            "SSH_CLIENT": "192.168.100.16 46124 22",
+            "SSH_CONNECTION": "192.168.100.16 46124 192.168.100.17 22",
+            "SSH_TTY": "/dev/pts/1",
+            "TERM": "xterm",
+            "USER": "root",
+            "XDG_RUNTIME_DIR": "/run/user/0",
+            "XDG_SESSION_CLASS": "user",
+            "XDG_SESSION_ID": "33",
+            "XDG_SESSION_TYPE": "tty",
+            "_": "/bin/sh"
+        },
+        "discovered_interpreter_python": "/usr/bin/python3.13"
+    },
+    "changed": false
+}
